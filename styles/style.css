@@ -42,14 +42,34 @@ li a:hover {
     background-color: pink;
 }
 
+
 h1 {
-    color: pink; /* mauve */
+    color: pink; 
     font-size: 2.5em;
     margin-bottom: 20px;
 }
 
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-section {
+    margin-bottom: 30px;
+}
+
+#breed-search {
+    padding: 10px;
+    font-size: 1.1em;
+    border: 1px solid pink;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 250px;
+}
+
 .btn {
-    background-color: pink; /* mauve */
+    background-color: pink;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -60,7 +80,7 @@ h1 {
 }
 
 .btn:hover {
-    background-color: hotpink; /* darker mauve */
+    background-color: hotpink; 
 }
 
 .gallery {
