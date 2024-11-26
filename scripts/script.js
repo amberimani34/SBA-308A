@@ -6,8 +6,6 @@ let breed = "";
 
 // Elements
 const puppyGallery = document.getElementById('puppy-gallery');
-const searchInput = document.getElementById('breed-search');
-const searchBtn = document.getElementById('search-btn');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
 
@@ -49,12 +47,6 @@ function togglePaginationButtons(hasMore) {
     nextBtn.disabled = !hasMore;
 }
 
-// Event Listener for the search button
-searchBtn.addEventListener('click', () => {
-    breed = searchInput.value.trim().toLowerCase();
-    page = 1; // Reset to the first page
-    fetchPuppies();
-});
 
 // Event Listener for "Next" button
 nextBtn.addEventListener('click', () => {

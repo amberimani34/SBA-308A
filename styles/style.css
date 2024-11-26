@@ -43,26 +43,13 @@ li a:hover {
 }
 
 h1 {
-    color: #8b008e; /* mauve */
+    color: pink; /* mauve */
     font-size: 2.5em;
     margin-bottom: 20px;
 }
 
-.search-section {
-    margin-bottom: 30px;
-}
-
-#breed-search {
-    padding: 10px;
-    font-size: 1.1em;
-    border: 1px solid #8B008B;
-    border-radius: 5px;
-    margin-right: 10px;
-    width: 250px;
-}
-
 .btn {
-    background-color: #8B008B; /* mauve */
+    background-color: pink; /* mauve */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -73,7 +60,7 @@ h1 {
 }
 
 .btn:hover {
-    background-color: #6A006A; /* darker mauve */
+    background-color: hotpink; /* darker mauve */
 }
 
 .gallery {
@@ -98,4 +85,11 @@ h1 {
 .puppy-img {
     width: 100%;
     height: auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
 }
