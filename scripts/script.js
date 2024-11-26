@@ -1,66 +1,35 @@
-const apiKey = "live_sLS3gKZwS6XyTaHyoBgm939Nb5yjGd0gM1OHO9s0eKI8U8eZfEaENjOABCpShIJB";
-const apiBaseURL = "https://api.thedogapi.com/v1/images/search?limit=10&api_key=" + apiKey;
+// app.js
+import { fetchPuppies } from './document.js';
+import { renderPuppies, togglePaginationButtons } from './user.js';
 
 let page = 1;
 let breed = "";
 
 // Elements
-const puppyGallery = document.getElementById('puppy-gallery');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
 
-// Fetch puppies from the API
-async function fetchPuppies() {
-    const url = breed
-        ? `${apiBaseURL}&breed_ids=${breed}&page=${page}`
-        : `${apiBaseURL}&page=${page}`;
-
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        // Clear previous images
-        puppyGallery.innerHTML = '';
-
-        if (data.length > 0) {
-            data.forEach(puppy => {
-                const puppyCard = document.createElement('div');
-                puppyCard.classList.add('puppy-card');
-                puppyCard.innerHTML = `
-                    <img src="${puppy.url}" alt="Puppy" class="puppy-img">
-                `;
-                puppyGallery.appendChild(puppyCard);
-            });
-        } else {
-            puppyGallery.innerHTML = "<p>No puppies found.</p>";
-        }
-
-        togglePaginationButtons(data.length > 0);
-    } catch (error) {
-        console.error("Error fetching puppies:", error);
-    }
-}
-
-// Toggle visibility of pagination buttons
-function togglePaginationButtons(hasMore) {
-    prevBtn.disabled = page === 1;
-    nextBtn.disabled = !hasMore;
+// Fetch puppies and update the UI
+async function loadPuppies() {
+    const puppies = await fetchPuppies(breed, page);
+    renderPuppies(puppies);
+    togglePaginationButtons(page, puppies.length > 0);
 }
 
 
-// Event Listener for "Next" button
+// Event Listener for "Next" Button
 nextBtn.addEventListener('click', () => {
     page++;
-    fetchPuppies();
+    loadPuppies();
 });
 
-// Event Listener for "Previous" button
+// Event Listener for "Previous" Button
 prevBtn.addEventListener('click', () => {
     if (page > 1) {
         page--;
-        fetchPuppies();
+        loadPuppies();
     }
 });
 
 // Initial load of puppies
-window.onload = fetchPuppies;
+window.onload = loadPuppies;
